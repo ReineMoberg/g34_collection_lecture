@@ -69,11 +69,11 @@ public class Person implements Comparable<Person>{
         // small to big
         // big to small
         if (obj.getId() < this.getId()){
-            return -1;
+            return 1;
         } else if (obj.getId() == this.getId()){
             return 0;
         } else{
-            return 1;
+            return -1;
         }
 
     }

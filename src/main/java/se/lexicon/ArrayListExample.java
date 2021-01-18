@@ -2,9 +2,7 @@ package se.lexicon;
 
 import se.lexicon.model.Person;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class ArrayListExample {
 
@@ -17,7 +15,7 @@ public class ArrayListExample {
 
 
     public static void main(String[] args) {
-        ex5();
+        ex7();
     }
 
 
@@ -122,9 +120,9 @@ public class ArrayListExample {
     }
 
 
-    public static void ex5(){
-        List<Person> personList= new ArrayList<>();
-        Person mehrdad = new Person(1,"Mehrdad","mehrdad.javan@lexicon.se",32);
+    public static void ex5() {
+        List<Person> personList = new ArrayList<>();
+        Person mehrdad = new Person(1, "Mehrdad", "mehrdad.javan@lexicon.se", 32);
         personList.add(mehrdad);
 
         Person simon = new Person();
@@ -134,18 +132,57 @@ public class ArrayListExample {
         simon.setAge(30);
         personList.add(simon);
 
-        personList.add(new Person(3,"Test","test.test@test.se",35));
+        personList.add(new Person(3, "Test", "test.test@test.se", 35));
         System.out.println("PersonList Size: " + personList.size());
 
         // find person by age = 32
-        for (Person person: personList){
-            if (person.getAge() == 32){
+        for (Person person : personList) {
+            if (person.getAge() == 32) {
                 System.out.println(person.toString());
                 break;
             }
         }
 
 
+    }
+
+
+    public static void ex6() {
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        numbers.add(100);
+        numbers.add(10);
+        numbers.add(200);
+        System.out.println(numbers.toString());
+
+        Collections.sort(numbers, Collections.reverseOrder());
+
+        System.out.println(numbers.toString());
+
+    }
+
+    public static void ex7() {
+
+        ArrayList<Person> persons = new ArrayList<>();
+        persons.add(new Person(2, "B", "A", 30));
+        persons.add(new Person(1, "A", "A", 34));
+        persons.add(new Person(1, "A", "B", 34));
+
+        Collections.sort(persons, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+
+        Collections.sort(persons, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getEmail().compareTo(o2.getEmail());
+            }
+        });
+
+        System.out.println("persons = " + persons);
 
     }
 }
